@@ -10,12 +10,11 @@ class SidebarItem extends React.Component {
   }
   render() {
     return (
-      <li>
-        <a>
+      <li className={this.props.isSelected ? 'sidebar__item--selected' : 'sidebar__item'}>
+        <a className='sidebar__link' onClick= {this.props.onClick}>
+            {this.props.file ? SidebarItem.getTitle(this.props.file) : 'Untitled'}
         </a>
       </li>
     );
   }
 }
-
-module.exports = SidebarItem;
