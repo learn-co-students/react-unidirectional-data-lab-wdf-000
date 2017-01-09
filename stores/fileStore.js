@@ -1,31 +1,28 @@
- 'use strict';
+'use strict';
+
 const Store = require('./Store');
 
 class FileStore extends Store {
-  constructor(initialState = ['']){
-    super(initialState);
-    this.state = initialState
-
+  updateFile(index, file) {
+    const files = this.getState().slice();
+    files.splice(index, 1, file);
+    this.setState(files);
   }
-  updateFile(index, value){
-   var updatedFile = this.state.slice()
-   updatedFile.splice(index,1,value)
-   this.setState(updatedFile)
- }
 
- addFile(){
-  this.setState([...this.state,''])
- }
+  addFile() {
+    const files = this.getState().concat('');
+    this.setState(files);
+  }
 
-  removeFile(index){
-  if(this.state.length == 1){
-   this.setState([''])
- }else{
-  var afterRemove = this.state.slice()
-  afterRemove.splice(index,1)
-  this.setState(afterRemove)
+  removeFile(index) {
+    if (this.state.length === 1) {
+      return this.setState(['']);
     }
-  }
- }
 
-module.exports = new FileStore;
+    const files = this.getState().slice()
+    files.splice(index, 1);
+    this.setState(files);
+  }
+}
+
+module.exports = new FileStore(['']);

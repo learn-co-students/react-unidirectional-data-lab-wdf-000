@@ -4,27 +4,33 @@ const React = require('react');
 const SidebarItem = require('./SidebarItem');
 
 class Sidebar extends React.Component {
-  constructor(){
-    super()
-    this.select = this.select.bind(this)
+
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-
-  select(index, ev){
-    ev.preventDefault()
+  handleClick(index, ev) {
+    ev.preventDefault();
     this.props.onSelect(index)
   }
 
-
-
   render() {
-    const { files, selectedFileIndex, onAdd } = this.props;
-
-
+    const { files, selectedFileIndex } = this.props;
 
     return (
       <ul className="sidebar">
-        {files.map((item,index)=> <SidebarItem key={index} file={item} onClick={this.select.bind(null,index)} isSelected={index === this.props.selectedFileIndex ? true : false}/>)}
+        {
+          files.map((file, i) => (
+            <SidebarItem
+              isSelected={selectedFileIndex === i}
+              key={i}
+              file={file}
+              onClick={this.handleClick.bind(null, i)}
+            />
+          ))
+        }
+
       </ul>
     );
   }

@@ -2,14 +2,12 @@
 
 const React = require('react');
 
-export default function Toolbar(props) {
+const Toolbar = ({ onAdd, onRemove }) => (
+  <nav className="toolbar">
+    <button onClick={onAdd}>+ Add note</button>
+    <button onClick={onRemove}>Delete note</button>
 
-  return (
-  <nav>
-    <button>+ Add note</button>
-    <button>Delete note</button>
   </nav>
-  )
-}
+);
 
 module.exports = Toolbar;
