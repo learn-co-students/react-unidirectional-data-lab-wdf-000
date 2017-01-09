@@ -23,4 +23,8 @@ const FileView = ({
   </div>
 );
 
+//our fileview component renders its file, onChange, onAdd, on Remove props in the arguments to the constant.
+//we render a <div> with a className of file-view and a toolbar compoennt which we pass in a onAdd and onRemove prop.
+//We render a textarea which has a placeholder and a value of the actual file prop and when we change the content in the textarea,
+//when we change the text in the textarea we will trigger the onChange function which is its prop
 module.exports = FileView;

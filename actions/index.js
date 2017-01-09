@@ -12,6 +12,7 @@ const fileStore = require('../stores/fileStore');
 const addFile = () => {
   fileStore.addFile()
 };
+//we evoke the addFile store function
 
 const removeFile = (index) => {
   fileStore.removeFile(index)
@@ -20,7 +21,7 @@ const removeFile = (index) => {
 const updateFile = (index, file) => {
   fileStore.updateFile(index, file)
 };
-
+//update file calls on the singleton store and passes on the index which is the state and file which is the actual value
 module.exports = {
   addFile,
   removeFile,
