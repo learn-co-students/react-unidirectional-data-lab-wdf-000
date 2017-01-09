@@ -43,14 +43,21 @@ describe('<Sidebar />', function() {
   context('when clicking a <SidebarItem />', function() {
     it('should preventDefault and call props.onSelect', function() {
       const onSelect = sinon.spy();
+      //onSelect is a fucntion we are spying on
       const wrapper = shallow(<Sidebar files={['first file']} onSelect={onSelect} />);
+      //wrapper is equal to the child component sidebar
       const onClick = wrapper.childAt(0).prop('onClick');
+      //const onClick is equal to the wrapper first child at index 0 and its prop onclick
       const ev = {
         preventDefault: sinon.spy(),
       };
+
+      //const ev is a hash that prevent deafult to the function sinon test creates
       onClick(ev);
       sinon.assert.calledOnce(ev.preventDefault);
+      //the function onSelect sinon created calls ev.key of preventDefault once
       sinon.assert.calledOnce(onSelect);
+      //calls on onSelect prop once and passes a index of the child
       sinon.assert.calledWith(onSelect, 0);
     });
   });

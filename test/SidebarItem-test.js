@@ -40,16 +40,23 @@ describe('<SidebarItem />', function() {
   context('when li.sidebar__item > a.sidebar__link is clicked', function() {
     it('should call onClick prop handler', function() {
       const onClick = sinon.spy();
+      //const is equal to spy function created
       const wrapper = shallow(<SidebarItem onClick={onClick} />);
+      //const wrapper is equal to the sidebar child componenet
       wrapper.find('a.sidebar__link').simulate('click');
+      //we find the a link wit the class of sidebar link and stimulate a click event.
       sinon.assert.calledOnce(onClick);
+      //onlick is called with the onClick prop of the parent
     });
   });
 
   it('should show first line of file in li.sidebar__item > a.sidebar__link', function() {
     const file = 'first line\nsecond line';
+    //const file is equal to a string more like a textbox text with line splits
     const wrapper = shallow(<SidebarItem file={file} />);
+    //wrapper is pointing to the sidebaritem child component.
     expect(wrapper.find('a.sidebar__link').text()).toBe('first line');
+    //the test espects to find the innerhtml of the a link to b the first line on the file object.
   });
 
   context('when file is empty', function() {
