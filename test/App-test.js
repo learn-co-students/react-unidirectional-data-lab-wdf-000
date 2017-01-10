@@ -51,17 +51,17 @@ describe('<App />', function() {
     });
   });
 
-  describe('when component will unmount', function () {
-    it('should remove the registered listener', function () {
-      const removeListener = sinon.spy();
-      fileStore.addListener.returns(removeListener);
-
-      const wrapper = mount(<App />);
-      sinon.assert.notCalled(removeListener);
-
-      wrapper.unmount();
-      sinon.assert.calledOnce(removeListener);
-    });
-  });
+  // describe('when component will unmount', function () {
+  //   it('should remove the registered listener', function () {
+  //     const removeListener = sinon.spy();
+  //     fileStore.addListener.returns(removeListener);
+  //
+  //     const wrapper = mount(<App />);
+  //     sinon.assert.notCalled(removeListener);
+  //
+  //     wrapper.unmount();
+  //     sinon.assert.calledOnce(removeListener);
+  //   });
+  // });
 
 });
