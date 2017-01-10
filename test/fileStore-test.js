@@ -34,12 +34,18 @@ describe('fileStore', function() {
   describe('#updateFile', function() {
     it('should update the file at the passed in index', function() {
       const instance = new FileStore(['hello', 'world']);
+      //instance is equal to an instance which points to a new Filestone object
       const prevState = instance.getState();
+      //prevstate is equal to the insance prev state
       expect(prevState).toEqual(['hello', 'world']);
+      //we want to updat the prevstate with the new state
 
       instance.updateFile(1, 'mars');
+      //updateFile function is given an argument of an index and the actual file
       const nextState = instance.getState();
+      //this constant is equal to of the old state. or current state to be precise
       expect(nextState).toEqual(['hello', 'mars']);
+      //i need to get the current state, find the state of the index of 1 and then update the state value with the file.
     });
 
     it('should not mutate store state, but create a new copy', function() {
@@ -54,17 +60,26 @@ describe('fileStore', function() {
 
   describe('#addFile', function() {
     it('should append empty string to store', function() {
+      //should append an empty string to the store state
       const instance = new FileStore([]);
+      //coonst instance is equal to a new fiel store object which is an array
       instance.addFile();
+      //we calll on filestore.addFile
       instance.addFile();
       expect(instance.getState()).toEqual(['', '']);
+      //at the point we expect filestores state to equal to array of two empty strings
     });
 
     it('should not mutate store state, but create a new copy', function() {
+      //do not mutate original copy
       const instance = new FileStore([]);
+      //new fielstore array obj
       const prevState = instance.getState();
+      //prevstate is equal to the current instance state
       instance.addFile();
+      //when i call on the instance addfile function
       expect(instance.getState()).toNotBe(prevState);
+      //except the instance get state not to equal prevstate
     });
   });
 
