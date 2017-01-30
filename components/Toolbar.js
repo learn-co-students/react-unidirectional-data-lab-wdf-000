@@ -2,11 +2,15 @@
 
 const React = require('react');
 
-const Toolbar = () => (
-  <nav>
-    <button>+ Add note</button>
-    <button>Delete note</button>
-  </nav>
-);
+class Toolbar extends React.Component {
+  render() {
+    return (
+      <nav>
+        <button onClick={this.props.onAdd} >+ Add note</button>
+        <button onClick={this.props.onRemove} >- Delete note</button>
+      </nav>
+    );
+  }
+}
 
 module.exports = Toolbar;
